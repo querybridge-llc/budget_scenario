@@ -47,6 +47,7 @@ class scenario():
         d['cpc_desktop'] = self.cpc_desktop
         d['mix_mobile'] = self.mix_mobile
         d['mix_desktop'] = 1 - self.mix_mobile
+        d['highlight'] = 1
         return d
 
     def modelSpend(self,spend):
@@ -69,6 +70,7 @@ class scenario():
         d['cpc_desktop'] = self.cpc_desktop
         d['mix_mobile'] = self.mix_mobile
         d['mix_desktop'] = 1 - self.mix_mobile
+        d['highlight'] = 2
         return d
 
 

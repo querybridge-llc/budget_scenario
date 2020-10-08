@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load humanize %}
+{% load mathfilters %}
 
 {# Display a form #}
 
@@ -55,8 +56,8 @@
     </div>
     <div class="row mb-3 ml-5">
       <ul class="list-group">
-        <li class="list-group-item">Spend: ${{ request.GET.spend |floatformat:2|intcomma  }}</li>
-        <li class="list-group-item">Revenue: ${{ request.GET.revenue |floatformat:2|intcomma }}</li>
+        <li class="list-group-item {% ifequal request.GET.highlight '1' %} list-group-item-success {% endifequal %}">Spend: ${{ request.GET.spend |floatformat:2|intcomma  }}</li>
+        <li class="list-group-item {% ifequal request.GET.highlight '2' %} list-group-item-success {% endifequal %}">Revenue: ${{ request.GET.revenue |floatformat:2|intcomma }}</li>
         <li class="list-group-item">Traffic: {{ request.GET.traffic |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Transactions: {{ request.GET.transactions |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Revenue per Visit: ${{ request.GET.rpv |floatformat:2|intcomma }}</li>
@@ -70,44 +71,52 @@
       <thead>
         <tr>
           <th scope="col">Metrics Label</th>
-          <th scope="col">Input Metrics</th>
-          <th scope="col">Current Avg.</th>
+          <th scope="col">Growth</th>
+          <th scope="col">2020 Projection</th>
+          <th scope="col">Target</th>
         </tr>
       </thead>
         <tr>
           <td>{{ form.conversion_mobile.label }}</td>
           <td><input type="text" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " onchange="conversion_mobileFunction(this)" value="{{request.GET.conversion_mobile}}"></td>
           <td>0.30% [0.0030]</td>
+          <td>{{request.GET.conversion_mobile |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
         <tr>
           <td>{{ form.conversion_desktop.label }}</td>
           <td><input type="text" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " onchange="conversion_desktopFunction(this)" value="{{request.GET.conversion_desktop}}"></td>
           <td>0.43% [0.0043]</td>
+          <td>{{request.GET.conversion_desktop |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
         <tr>
           <td>{{ form.aov_mobile.label }}</td>
           <td><input type="text" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " onchange="aov_mobileFunction(this)" value="{{request.GET.aov_mobile}}"></td>
           <td>$466 [466]</td>
+          <td>${{request.GET.aov_mobile |floatformat:0|intcomma}}</td>
         </tr>
         <tr>
           <td>{{ form.aov_desktop.label }}</td>
           <td><input type="text" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " onchange="aov_desktopFunction(this)" value="{{request.GET.aov_desktop}}"></td>
           <td>$516 [516]</td>
+          <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
         </tr>
         <tr>
           <td>{{ form.cpc_mobile.label }}</td>
           <td><input type="text" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " onchange="cpc_mobileFunction(this)" value="{{request.GET.cpc_mobile}}"></td>
           <td>$0.59 [0.59]</td>
+          <td>${{request.GET.cpc_mobile |floatformat:2|intcomma}}</td>
         </tr>
         <tr>
           <td>{{ form.cpc_desktop.label }}</td>
           <td><input type="text" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " onchange="cpc_desktopFunction(this)" value="{{request.GET.cpc_desktop}}"></td>
           <td>$2.09 [2.09]</td>
+          <td>${{request.GET.cpc_desktop |floatformat:2|intcomma}}</td>
         </tr>
         <tr>
           <td>{{ form.mix_mobile.label }}</td>
           <td><input type="text" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " onchange="mix_mobileFunction(this)" value="{{request.GET.mix_mobile}}"></td>
           <td>72% [0.72]</td>
+          <td>{{request.GET.mix_mobile |floatformat:2|intcomma|mul:100}}%</td>
         </tr>
 
     </form>
