@@ -39,6 +39,14 @@ class scenario():
         d['traffic'] = sessions
         d['transactions'] = transactions
         d['rpv'] = rpv
+        d['conversion_mobile'] = self.conversion_mobile
+        d['conversion_desktop'] = self.conversion_desktop
+        d['aov_mobile'] = self.aov_mobile
+        d['aov_desktop'] = self.aov_desktop
+        d['cpc_mobile'] = self.cpc_mobile
+        d['cpc_desktop'] = self.cpc_desktop
+        d['mix_mobile'] = self.mix_mobile
+        d['mix_desktop'] = 1 - self.mix_mobile
         return d
 
     def modelSpend(self,spend):
@@ -53,6 +61,14 @@ class scenario():
         d['traffic'] = traffic_m+traffic_d
         d['transactions'] = (traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)
         d['rpv'] = rpv
+        d['conversion_mobile'] = self.conversion_mobile
+        d['conversion_desktop'] = self.conversion_desktop
+        d['aov_mobile'] = self.aov_mobile
+        d['aov_desktop'] = self.aov_desktop
+        d['cpc_mobile'] = self.cpc_mobile
+        d['cpc_desktop'] = self.cpc_desktop
+        d['mix_mobile'] = self.mix_mobile
+        d['mix_desktop'] = 1 - self.mix_mobile
         return d
 
 
