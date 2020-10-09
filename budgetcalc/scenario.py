@@ -28,27 +28,32 @@ class scenario():
 
 
     def modelRevenue(self,revenue):
-        '''Insert Revenue Goal to find required spend'''
-        transactions = revenue/((self.aov_mobile+self.aov_desktop)/2)
-        sessions = transactions/((self.conversion_mobile+self.conversion_desktop)/2)
-        #spend = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
-        rpv = revenue/sessions
-        d = dict();
-        d['spend'] = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
-        d['revenue'] = revenue
-        d['traffic'] = sessions
-        d['transactions'] = transactions
-        d['rpv'] = rpv
-        d['conversion_mobile'] = self.conversion_mobile
-        d['conversion_desktop'] = self.conversion_desktop
-        d['aov_mobile'] = self.aov_mobile
-        d['aov_desktop'] = self.aov_desktop
-        d['cpc_mobile'] = self.cpc_mobile
-        d['cpc_desktop'] = self.cpc_desktop
-        d['mix_mobile'] = self.mix_mobile
-        d['mix_desktop'] = 1 - self.mix_mobile
-        d['highlight'] = 1
-        return d
+            '''Insert Revenue Goal to find required spend'''
+            spend = revenue / ( (self.mix_mobile*self.conversion_mobile*self.aov_mobile) / self.cpc_mobile +
+                                (self.mix_desktop*self.conversion_desktop*self.aov_desktop) /self.cpc_desktop )
+            traffic_m = (spend * self.mix_mobile)/self.cpc_mobile
+            traffic_d = (spend * self.mix_desktop) / self.cpc_desktop
+            transactions = (traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)
+            sessions = traffic_m+traffic_d
+            ##spend = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
+            rpv = revenue/sessions
+            d = dict();
+            d['spend'] = spend
+            #d['spend'] = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
+            d['revenue'] = revenue
+            d['traffic'] = sessions
+            d['transactions'] = transactions
+            d['rpv'] = rpv
+            d['conversion_mobile'] = self.conversion_mobile
+            d['conversion_desktop'] = self.conversion_desktop
+            d['aov_mobile'] = self.aov_mobile
+            d['aov_desktop'] = self.aov_desktop
+            d['cpc_mobile'] = self.cpc_mobile
+            d['cpc_desktop'] = self.cpc_desktop
+            d['mix_mobile'] = self.mix_mobile
+            d['mix_desktop'] = 1 - self.mix_mobile
+            d['highlight'] = 1
+            return d
 
     def modelSpend(self,spend):
         '''Insert Spend to see Revenue output'''
