@@ -11,7 +11,7 @@
   <p class="lead">Input Spend to predict Revenue. Input Revenue to see required Spend. Adjust metrics to hit required Target.</p>
   <hr class="my-4">
 <div class="row">
-  <div class="col-m-5">
+  <div class="col-lg-3">
     <div class="row mb-3">
 
       <table class="table table-sm ml-5">
@@ -65,7 +65,7 @@
     </div>
 
   </div>
-  <div class="col-m-7">
+  <div class="col-lg-9">
   <table class="table table-dark table-sm table-bordered ml-lg-5">
   <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
       <thead>
@@ -79,6 +79,11 @@
         <tr>
           <td>{{ form.conversion_mobile.label }}</td>
           <td><input placeholder="0.0030" type="text" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " onchange="conversion_mobileFunction(this)" value="{{request.GET.conversion_mobile}}"></td>
+          <td>
+            <label for="cowbell">Cowbell</label>
+            <input type="range" id="cowbell" name="cowbell" min="0" max="1" value="0" step=".01" onchange="updateTextInput(this.value);">
+            <input type="text" id="textInput" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>0.30%</td>
           <td>{{request.GET.conversion_mobile |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
@@ -128,6 +133,11 @@
 
 
 <script type="text/javascript">
+
+function updateTextInput(val) {
+            document.getElementById('textInput').value=val;
+          }
+
 submitFormsSpend = function(){
   document.getElementById("form1").submit();
   //document.getElementById("form3").submit();

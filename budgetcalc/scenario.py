@@ -17,7 +17,7 @@ from django.http import HttpResponse
 class scenario():
 
     def __init__(self, conversion_mobile, conversion_desktop, aov_mobile, aov_desktop, cpc_mobile, cpc_desktop, mix_mobile):
-                self.conversion_mobile = conversion_mobile
+                self.conversion_mobile = conversion_mobile * .003
                 self.conversion_desktop = conversion_desktop
                 self.aov_mobile = aov_mobile
                 self.aov_desktop = aov_desktop
