@@ -77,15 +77,20 @@
   <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
       <thead>
         <tr>
-          <th scope="col">Metrics Label</th>
-          <th scope="col">Growth</th>
-          <th scope="col">2020 Projection</th>
-          <th scope="col">2021 Target</th>
+          <th scope="col" class="text-center">Metrics Label</th>
+          <th scope="col" class="text-center" colspan="2">Growth Percentage</th>
+          <th scope="col" class="text-center">2020 Projection</th>
+          <th scope="col" class="text-center">2021 Target</th>
         </tr>
       </thead>
         <tr>
           <td>{{ form.conversion_mobile.label }}</td>
-          <td><input placeholder="0.0030" type="text" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " onchange="conversion_mobileFunction(this)" value="{{request.GET.conversion_mobile}}"></td>
+          <td><input placeholder="" type="range" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="0" max="1" value="0" step=".01"
+            onchange="updateTextInput1(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}">
+          </td>
+          <td>
+          <input type="text" id="textInput1" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
     <!--      <td>
             <label for="cowbell">Cowbell</label>
             <input type="range" id="cowbell" name="cowbell" min="0" max="1" value="0" step=".01" onchange="updateTextInput(this.value);">
@@ -96,7 +101,13 @@
         </tr>
         <tr>
           <td>{{ form.conversion_desktop.label }}</td>
-          <td><input placeholder="0.0043" type="text" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " onchange="conversion_desktopFunction(this)" value="{{request.GET.conversion_desktop}}"></td>
+          <!-- <td><input placeholder="0.0043" type="text" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " onchange="conversion_desktopFunction(this)" value="{{request.GET.conversion_desktop}}"></td> -->
+          <td><input placeholder="" type="range" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="0" max="1" value="0" step=".01"
+            onchange="updateTextInput2(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}">
+          </td>
+          <td>
+          <input type="text" id="textInput2" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>0.43%</td>
           <td>{{request.GET.conversion_desktop |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
@@ -141,8 +152,14 @@
 
 <script type="text/javascript">
 
-function updateTextInput(val) {
-            document.getElementById('textInput').value=val;
+function updateTextInput1(val) {
+            document.getElementById('textInput1').value=val;
+          }
+function updateTextInput2(val) {
+            document.getElementById('textInput2').value=val;
+          }
+function updateTextInput3(val) {
+            document.getElementById('textInput3').value=val;
           }
 
 submitFormsSpend = function(){

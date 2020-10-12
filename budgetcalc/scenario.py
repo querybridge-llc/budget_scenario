@@ -1,14 +1,13 @@
 
-'''conversion_mobile = .0035
-conversion_desktop = .01
-traffic = 1
-aov_mobile = 550
-aov_desktop = 500
-cpc_mobile = 0.75
-cpc_desktop = 1.25
-mix_mobile = .3
-mix_desktop = 1.0 - mix_mobile
-'''
+conversion_mobile_2020 = .003
+conversion_desktop_2020 = .0043
+aov_mobile_2020 = 466
+aov_desktop_2020 = 516
+cpc_mobile_2020 = 0.59
+cpc_desktop_2020 = 2.09
+mix_mobile_2020 = .72
+mix_desktop = 1.0 - mix_mobile_2020
+
 from django.http import HttpResponse
 
 
@@ -17,13 +16,13 @@ from django.http import HttpResponse
 class scenario():
 
     def __init__(self, conversion_mobile, conversion_desktop, aov_mobile, aov_desktop, cpc_mobile, cpc_desktop, mix_mobile):
-                self.conversion_mobile = conversion_mobile
-                self.conversion_desktop = conversion_desktop
-                self.aov_mobile = aov_mobile
-                self.aov_desktop = aov_desktop
-                self.cpc_mobile = cpc_mobile
-                self.cpc_desktop = cpc_desktop
-                self.mix_mobile = mix_mobile
+                self.conversion_mobile = conversion_mobile * conversion_mobile_2020
+                self.conversion_desktop = conversion_desktop *conversion_desktop_2020
+                self.aov_mobile = aov_mobile * aov_mobile_2020
+                self.aov_desktop = aov_desktop * aov_desktop_2020
+                self.cpc_mobile = cpc_mobile * cpc_mobile_2020
+                self.cpc_desktop = cpc_desktop * cpc_desktop_2020
+                self.mix_mobile = mix_mobile * mix_mobile_2020
                 self.mix_desktop = 1.0 - mix_mobile
 
 
