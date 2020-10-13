@@ -16,13 +16,13 @@ from django.http import HttpResponse
 class scenario():
 
     def __init__(self, conversion_mobile, conversion_desktop, aov_mobile, aov_desktop, cpc_mobile, cpc_desktop, mix_mobile):
-                self.conversion_mobile = conversion_mobile * conversion_mobile_2020
-                self.conversion_desktop = conversion_desktop *conversion_desktop_2020
-                self.aov_mobile = aov_mobile * aov_mobile_2020
-                self.aov_desktop = aov_desktop * aov_desktop_2020
-                self.cpc_mobile = cpc_mobile * cpc_mobile_2020
-                self.cpc_desktop = cpc_desktop * cpc_desktop_2020
-                self.mix_mobile = mix_mobile * mix_mobile_2020
+                self.conversion_mobile = conversion_mobile_2020 + (conversion_mobile * conversion_mobile_2020)
+                self.conversion_desktop = conversion_desktop_2020 + (conversion_desktop * conversion_desktop_2020)
+                self.aov_mobile = aov_mobile_2020 + ((aov_mobile/100) * aov_mobile_2020)
+                self.aov_desktop = aov_desktop_2020 + ((aov_desktop/100) * aov_desktop_2020)
+                self.cpc_mobile = cpc_mobile_2020 + (cpc_mobile * cpc_mobile_2020)
+                self.cpc_desktop = cpc_desktop_2020 + (cpc_desktop * cpc_desktop_2020)
+                self.mix_mobile = mix_mobile_2020 + (mix_mobile * mix_mobile_2020)
                 self.mix_desktop = 1.0 - mix_mobile
 
 
