@@ -84,9 +84,8 @@
         </tr>
       </thead>
         <tr>
-
           <td>{{ form.conversion_mobile.label }}</td>
-          <td><input placeholder="" type="range" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="0" max="1" value="0" step=".01"
+          <td><input placeholder="" type="number" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput1(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}">
           </td>
           <td>
@@ -98,7 +97,7 @@
 
         <tr>
           <td>{{ form.conversion_desktop.label }}</td>
-          <td><input placeholder="" type="range" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="0" max="1" value="0" step=".01"
+          <td><input placeholder="" type="number" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput2(this.value);conversion_desktopFunction(this);" value="{{request.GET.conversion_desktop}}">
           </td>
           <td>
@@ -110,10 +109,10 @@
 
         <tr>
           <td>{{ form.aov_mobile.label }}</td>
-          <td><input placeholder="" type="range" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="0" max="100" value="0" step="1"
+          <td><input placeholder="" type="number" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput3(this.value);aov_mobileFunction(this);" value="{{request.GET.aov_mobile}}">
           <td>
-          <input type="text" id="textInput3" class="form-control form-control-sm col-3 " value="" readonly>%
+          <input type="text" id="textInput3" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
           <td>$466</td>
           <td>${{request.GET.aov_mobile |floatformat:0|intcomma }}</td>
@@ -121,10 +120,10 @@
 
         <tr>
           <td>{{ form.aov_desktop.label }}</td>
-          <td><input placeholder="" type="range" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " min="0" max="100" value="0" step="1"
+          <td><input placeholder="" type="number" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput4(this.value);aov_desktopFunction(this);" value="{{request.GET.aov_desktop}}">
           <td>
-          <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>%
+          <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
           <td>$516</td>
           <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
@@ -132,7 +131,7 @@
 
         <tr>
           <td>{{ form.cpc_mobile.label }}</td>
-          <td><input placeholder="" type="range" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="0" max="1" value="0" step=".01"
+          <td><input placeholder="" type="number" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput5(this.value);cpc_mobileFunction(this);" value="{{request.GET.cpc_mobile}}">
           <td>
           <input type="text" id="textInput5" class="form-control form-control-sm col-3 " value="" readonly>
@@ -143,7 +142,7 @@
 
         <tr>
           <td>{{ form.cpc_desktop.label }}</td>
-           <td><input placeholder="" type="range" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " min="0" max="1" value="0" step=".01"
+           <td><input placeholder="" type="number" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput6(this.value);cpc_desktopFunction(this);" value="{{request.GET.cpc_desktop}}">
           <td>
           <input type="text" id="textInput6" class="form-control form-control-sm col-3 " value="" readonly>
@@ -154,7 +153,7 @@
 
         <tr>
           <td>{{ form.mix_mobile.label }}</td>
-           <td><input placeholder="" type="range" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="0" max="1" value="0" step="0.01"
+           <td><input placeholder="" type="number" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput7(this.value);mix_mobileFunction(this);" value="{{request.GET.mix_mobile}}">
           <td>
           <input type="text" id="textInput7" class="form-control form-control-sm col-3 " value="" readonly>
