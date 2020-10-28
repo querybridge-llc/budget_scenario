@@ -24,13 +24,13 @@
           <!--  <td><button type="Submit" id="copy"  class="btn btn-primary">Submit</button></td> -->
           </tr>
           <tr>
-            <td><input type="hidden" id="id_conversion_mobile" name="conversion_mobile" value='.0030'></td>
-            <td><input type="hidden" id="id_conversion_desktop" name="conversion_desktop" value='.0043'></td>
-            <td><input type="hidden" id="id_aov_mobile" name="aov_mobile" value='466'></td>
-            <td><input type="hidden" id="id_aov_desktop" name="aov_desktop" value='516'></td>
-            <td><input type="hidden" id="id_cpc_mobile" name="cpc_mobile" value='.59'></td>
-            <td><input type="hidden" id="id_cpc_desktop" name="cpc_desktop" value='2.09'></td>
-            <td><input type="hidden" id="id_mix_mobile" name="mix_mobile" value='.72'></td>
+            <td><input type="hidden" id="id_conversion_mobile" name="conversion_mobile" value='0'></td>
+            <td><input type="hidden" id="id_conversion_desktop" name="conversion_desktop" value='0'></td>
+            <td><input type="hidden" id="id_aov_mobile" name="aov_mobile" value='0'></td>
+            <td><input type="hidden" id="id_aov_desktop" name="aov_desktop" value='0'></td>
+            <td><input type="hidden" id="id_cpc_mobile" name="cpc_mobile" value='0'></td>
+            <td><input type="hidden" id="id_cpc_desktop" name="cpc_desktop" value='0'></td>
+            <td><input type="hidden" id="id_mix_mobile" name="mix_mobile" value='0'></td>
           </tr>
       </form>
 
@@ -43,13 +43,13 @@
             <td><button type="Submit" id="copy" class="btn btn-primary">Predict</button></td>
           </tr>
           <tr>
-            <td><input type="hidden" id="id_conversion_mobile2" name="conversion_mobile" value='.0030'></td>
-            <td><input type="hidden" id="id_conversion_desktop2" name="conversion_desktop" value='.0043'></td>
-            <td><input type="hidden" id="id_aov_mobile2" name="aov_mobile" value='466'></td>
-            <td><input type="hidden" id="id_aov_desktop2" name="aov_desktop" value='516'></td>
-            <td><input type="hidden" id="id_cpc_mobile2" name="cpc_mobile" value='.59'></td>
-            <td><input type="hidden" id="id_cpc_desktop2" name="cpc_desktop" value='2.09'></td>
-            <td><input type="hidden" id="id_mix_mobile2" name="mix_mobile" value='.72'></td>
+            <td><input type="hidden" id="id_conversion_mobile2" name="conversion_mobile" value='0'></td>
+            <td><input type="hidden" id="id_conversion_desktop2" name="conversion_desktop" value='0'></td>
+            <td><input type="hidden" id="id_aov_mobile2" name="aov_mobile" value='0'></td>
+            <td><input type="hidden" id="id_aov_desktop2" name="aov_desktop" value='0'></td>
+            <td><input type="hidden" id="id_cpc_mobile2" name="cpc_mobile" value='0'></td>
+            <td><input type="hidden" id="id_cpc_desktop2" name="cpc_desktop" value='0'></td>
+            <td><input type="hidden" id="id_mix_mobile2" name="mix_mobile" value='0'></td>
           </tr>
       </form>
       </table>
@@ -77,56 +77,87 @@
   <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
       <thead>
         <tr>
-          <th scope="col">Metrics Label</th>
-          <th scope="col">Growth</th>
-          <th scope="col">2020 Projection</th>
-          <th scope="col">2021 Target</th>
+          <th scope="col" class="text-center">Metrics Label</th>
+          <th scope="col" class="text-center" colspan="2">Growth Percentage <br><sub>(for eg: 10 = 10%)</sub></br></th>
+          <th scope="col" class="text-center">2020 Projection</th>
+          <th scope="col" class="text-center">2021 Target</th>
         </tr>
       </thead>
         <tr>
           <td>{{ form.conversion_mobile.label }}</td>
-          <td><input placeholder="0.0030" type="text" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " onchange="conversion_mobileFunction(this)" value="{{request.GET.conversion_mobile}}"></td>
-    <!--      <td>
-            <label for="cowbell">Cowbell</label>
-            <input type="range" id="cowbell" name="cowbell" min="0" max="1" value="0" step=".01" onchange="updateTextInput(this.value);">
-            <input type="text" id="textInput" class="form-control form-control-sm col-3 " value="" readonly>
-          </td> -->
+          <td><input placeholder="" type="number" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="-100" max="100" value="0" step="1"
+                     onchange="updateTextInput1(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}" >
+          </td>
+          <td>
+          <input type="text" id="textInput1" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>0.30%</td>
           <td>{{request.GET.conversion_mobile |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
+
         <tr>
           <td>{{ form.conversion_desktop.label }}</td>
-          <td><input placeholder="0.0043" type="text" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " onchange="conversion_desktopFunction(this)" value="{{request.GET.conversion_desktop}}"></td>
+          <td><input placeholder="" type="number" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput2(this.value);conversion_desktopFunction(this);" value="{{request.GET.conversion_desktop}}">
+          </td>
+          <td>
+          <input type="text" id="textInput2" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>0.43%</td>
           <td>{{request.GET.conversion_desktop |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
+
         <tr>
           <td>{{ form.aov_mobile.label }}</td>
-          <td><input placeholder="466" type="text" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " onchange="aov_mobileFunction(this)" value="{{request.GET.aov_mobile}}"></td>
+          <td><input placeholder="" type="number" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput3(this.value);aov_mobileFunction(this);" value="{{request.GET.aov_mobile}}">
+          <td>
+          <input type="text" id="textInput3" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>$466</td>
-          <td>${{request.GET.aov_mobile |floatformat:0|intcomma}}</td>
+          <td>${{request.GET.aov_mobile |floatformat:0|intcomma }}</td>
         </tr>
+
         <tr>
           <td>{{ form.aov_desktop.label }}</td>
-          <td><input placeholder='516' type="text" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " onchange="aov_desktopFunction(this)" value="{{request.GET.aov_desktop}}"></td>
+          <td><input placeholder="" type="number" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput4(this.value);aov_desktopFunction(this);" value="{{request.GET.aov_desktop}}">
+          <td>
+          <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>$516</td>
           <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
         </tr>
+
         <tr>
           <td>{{ form.cpc_mobile.label }}</td>
-          <td><input placeholder="0.59" type="text" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " onchange="cpc_mobileFunction(this)" value="{{request.GET.cpc_mobile}}"></td>
+          <td><input placeholder="" type="number" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput5(this.value);cpc_mobileFunction(this);" value="{{request.GET.cpc_mobile}}">
+          <td>
+          <input type="text" id="textInput5" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>$0.59</td>
           <td>${{request.GET.cpc_mobile |floatformat:2|intcomma}}</td>
         </tr>
+
         <tr>
           <td>{{ form.cpc_desktop.label }}</td>
-          <td><input placeholder="2.09" type="text" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " onchange="cpc_desktopFunction(this)" value="{{request.GET.cpc_desktop}}"></td>
+           <td><input placeholder="" type="number" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput6(this.value);cpc_desktopFunction(this);" value="{{request.GET.cpc_desktop}}">
+          <td>
+          <input type="text" id="textInput6" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>$2.09</td>
           <td>${{request.GET.cpc_desktop |floatformat:2|intcomma}}</td>
         </tr>
+
         <tr>
           <td>{{ form.mix_mobile.label }}</td>
-          <td><input placeholder="0.72" type="text" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " onchange="mix_mobileFunction(this)" value="{{request.GET.mix_mobile}}"></td>
+           <td><input placeholder="" type="number" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="-100" max="100" value="0" step="1"
+            onchange="updateTextInput7(this.value);mix_mobileFunction(this);" value="{{request.GET.mix_mobile}}">
+          <td>
+          <input type="text" id="textInput7" class="form-control form-control-sm col-3 " value="" readonly>
+          </td>
           <td>72%</td>
           <td>{{request.GET.mix_mobile |floatformat:2|intcomma|mul:100}}%</td>
         </tr>
@@ -141,9 +172,28 @@
 
 <script type="text/javascript">
 
-function updateTextInput(val) {
-            document.getElementById('textInput').value=val;
+function updateTextInput1(val) {
+            document.getElementById('textInput1').value=val;
           }
+function updateTextInput2(val) {
+            document.getElementById('textInput2').value=val;
+          }
+function updateTextInput3(val) {
+            document.getElementById('textInput3').value=val;
+          }
+function updateTextInput4(val) {
+            document.getElementById('textInput4').value=val;
+          }
+function updateTextInput5(val) {
+            document.getElementById('textInput5').value=val;
+          }
+function updateTextInput6(val) {
+            document.getElementById('textInput6').value=val;
+          }
+function updateTextInput7(val) {
+            document.getElementById('textInput7').value=val;
+          }
+
 
 submitFormsSpend = function(){
   document.getElementById("form1").submit();
@@ -187,6 +237,7 @@ submitFormsRevenue = function(){
   function cpc_mobileFunction(input_metric) {
     var cpc_mobile = document.getElementById('id_cpc_mobile');
     var cpc_mobile2 = document.getElementById('id_cpc_mobile2');
+    cpc_mobile.value = input_metric.value;
     cpc_mobile2.value = input_metric.value;
   }
   function cpc_desktopFunction(input_metric) {
@@ -198,6 +249,7 @@ submitFormsRevenue = function(){
   function mix_mobileFunction(input_metric) {
     var mix_mobile = document.getElementById('id_mix_mobile');
     var mix_mobile2 = document.getElementById('id_mix_mobile2');
+    mix_mobile.value = input_metric.value;
     mix_mobile2.value = input_metric.value;
   }
 </script>
