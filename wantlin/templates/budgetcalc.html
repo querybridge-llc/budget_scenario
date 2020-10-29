@@ -145,73 +145,96 @@
             <div class="col"></div>
         </div>
 
-    </div>
 
-    <script type="text/javascript">
-
-        function updateTextInput(val) {
-            document.getElementById('textInput').value=val;
-        }
-
-        submitFormsSpend = function(){
-            document.getElementById("form1").submit();
-            //document.getElementById("form3").submit();
-            //one = document.getElementById("id_conversion_mobile")
-            //conversion_mobileFunction(one);
-        }
-
-        submitFormsRevenue = function(){
-            document.getElementById("form2").submit();
-            //document.getElementById("form3").submit();
-        }
-    </script>
+</div>
 
 
-    <script type="text/javascript">
-        function conversion_mobileFunction(input_metric) {
-            var conversion_mobile = document.getElementById('id_conversion_mobile');
-            var conversion_mobile2 = document.getElementById('id_conversion_mobile2');
-            conversion_mobile.value = input_metric.value;
-            conversion_mobile2.value = input_metric.value;
-        }
-        function conversion_desktopFunction(input_metric) {
-            var conversion_desktop = document.getElementById('id_conversion_desktop');
-            var conversion_desktop2 = document.getElementById('id_conversion_desktop2');
-            conversion_desktop.value = input_metric.value;
-            conversion_desktop2.value = input_metric.value;
-        }
-        function aov_mobileFunction(input_metric) {
-            var aov_mobile = document.getElementById('id_aov_mobile');
-            var aov_mobile2 = document.getElementById('id_aov_mobile2');
-            aov_mobile.value = input_metric.value;
-            aov_mobile2.value = input_metric.value;
-        }
-        function aov_desktopFunction(input_metric) {
-            var aov_desktop = document.getElementById('id_aov_desktop');
-            var aov_desktop2 = document.getElementById('id_aov_desktop2');
-            aov_desktop.value = input_metric.value;
-            aov_desktop2.value = input_metric.value;
-        }
-        function cpc_mobileFunction(input_metric) {
-            var cpc_mobile = document.getElementById('id_cpc_mobile');
-            var cpc_mobile2 = document.getElementById('id_cpc_mobile2');
-            cpc_mobile2.value = input_metric.value;
-        }
-        function cpc_desktopFunction(input_metric) {
-            var cpc_desktop = document.getElementById('id_cpc_desktop');
-            var cpc_desktop2 = document.getElementById('id_cpc_desktop2');
-            cpc_desktop.value = input_metric.value;
-            cpc_desktop2.value = input_metric.value;
-        }
-        function mix_mobileFunction(input_metric) {
-            var mix_mobile = document.getElementById('id_mix_mobile');
-            var mix_mobile2 = document.getElementById('id_mix_mobile2');
-            mix_mobile2.value = input_metric.value;
-        }
-    </script>
+<script type="text/javascript">
+
+function updateTextInput1(val) {
+            document.getElementById('textInput1').value=val;
+          }
+function updateTextInput2(val) {
+            document.getElementById('textInput2').value=val;
+          }
+function updateTextInput3(val) {
+            document.getElementById('textInput3').value=val;
+          }
+function updateTextInput4(val) {
+            document.getElementById('textInput4').value=val;
+          }
+function updateTextInput5(val) {
+            document.getElementById('textInput5').value=val;
+          }
+function updateTextInput6(val) {
+            document.getElementById('textInput6').value=val;
+          }
+function updateTextInput7(val) {
+            document.getElementById('textInput7').value=val;
+          }
+
+
+submitFormsSpend = function(){
+  document.getElementById("form1").submit();
+  //document.getElementById("form3").submit();
+  //one = document.getElementById("id_conversion_mobile")
+  //conversion_mobileFunction(one);
+}
+
+submitFormsRevenue = function(){
+  document.getElementById("form2").submit();
+  //document.getElementById("form3").submit();
+}
+</script>
+
+
+<script type="text/javascript">
+  function conversion_mobileFunction(input_metric) {
+    var conversion_mobile = document.getElementById('id_conversion_mobile');
+    var conversion_mobile2 = document.getElementById('id_conversion_mobile2');
+    conversion_mobile.value = input_metric.value;
+    conversion_mobile2.value = input_metric.value;
+  }
+  function conversion_desktopFunction(input_metric) {
+    var conversion_desktop = document.getElementById('id_conversion_desktop');
+    var conversion_desktop2 = document.getElementById('id_conversion_desktop2');
+    conversion_desktop.value = input_metric.value;
+    conversion_desktop2.value = input_metric.value;
+  }
+  function aov_mobileFunction(input_metric) {
+    var aov_mobile = document.getElementById('id_aov_mobile');
+    var aov_mobile2 = document.getElementById('id_aov_mobile2');
+    aov_mobile.value = input_metric.value;
+    aov_mobile2.value = input_metric.value;
+  }
+  function aov_desktopFunction(input_metric) {
+    var aov_desktop = document.getElementById('id_aov_desktop');
+    var aov_desktop2 = document.getElementById('id_aov_desktop2');
+    aov_desktop.value = input_metric.value;
+    aov_desktop2.value = input_metric.value;
+  }
+  function cpc_mobileFunction(input_metric) {
+    var cpc_mobile = document.getElementById('id_cpc_mobile');
+    var cpc_mobile2 = document.getElementById('id_cpc_mobile2');
+    cpc_mobile.value = input_metric.value;
+    cpc_mobile2.value = input_metric.value;
+  }
+  function cpc_desktopFunction(input_metric) {
+    var cpc_desktop = document.getElementById('id_cpc_desktop');
+    var cpc_desktop2 = document.getElementById('id_cpc_desktop2');
+    cpc_desktop.value = input_metric.value;
+    cpc_desktop2.value = input_metric.value;
+  }
+  function mix_mobileFunction(input_metric) {
+    var mix_mobile = document.getElementById('id_mix_mobile');
+    var mix_mobile2 = document.getElementById('id_mix_mobile2');
+    mix_mobile.value = input_metric.value;
+    mix_mobile2.value = input_metric.value;
+  }
+</script>
 
 
 
-    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 
 {% endblock content %}
