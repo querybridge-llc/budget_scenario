@@ -7,8 +7,8 @@
 
 {% block content %}
     <style type="text/css">
-    #spend_rev td {
-        border-top: none !important;}
+    #spend_rev td {border-top: none !important;}
+    #calc {color: #FFFFFF;}
     </style>
     <div class="jumbotron " style="background-color: #F7F7F7">
         <h1 class="display-4">Budget Scenarios</h1>
@@ -77,8 +77,9 @@
 
         <div class="row">
             <div class="col">
-                <table class="table table-responsive-md table-sm" style="background-color: #363634">
-                    <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <table class="table table-responsive-md table-sm" style="background-color: #363634; color: #FFFFFF !important;" id="calc">
+                    <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
                         <thead>
                         <tr>
                             <th scope="col">Metrics Label</th>
