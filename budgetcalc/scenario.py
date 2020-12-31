@@ -1,12 +1,12 @@
 
-conversion_mobile_2020 = .003
-conversion_desktop_2020 = .0043
-aov_mobile_2020 = 466
-aov_desktop_2020 = 516
-cpc_mobile_2020 = 0.59
-cpc_desktop_2020 = 2.09
-mix_mobile_2020 = .72
-mix_desktop_2020 = 1.0 - 0.72
+conversion_mobile_2020 = .0028
+conversion_desktop_2020 = .0076
+aov_mobile_2020 = 436.76
+aov_desktop_2020 = 532.93
+cpc_mobile_2020 = .69
+cpc_desktop_2020 = .96
+mix_mobile_2020 = .7239
+mix_desktop_2020 = 1.0 - mix_mobile_2020
 
 from django.http import HttpResponse
 
