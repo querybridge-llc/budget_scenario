@@ -1,6 +1,6 @@
 
-conversion_mobile_2020 = .0028
-conversion_desktop_2020 = .0076
+conversion_mobile_2020 = .0028198688
+conversion_desktop_2020 = .007603823670
 aov_mobile_2020 = 436.76
 aov_desktop_2020 = 532.93
 cpc_mobile_2020 = .69
