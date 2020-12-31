@@ -79,7 +79,7 @@
         <tr>
           <th scope="col" class="text-center">Metrics Label</th>
           <th scope="col" class="text-center" colspan="2">Growth Percentage <br><sub>(for eg: 10 = 10%)</sub></br></th>
-          <th scope="col" class="text-center">2020 Projection</th>
+          <th scope="col" class="text-center">2020 Baseline</th>
           <th scope="col" class="text-center">2021 Target</th>
         </tr>
       </thead>
@@ -91,7 +91,7 @@
           <td>
           <input type="text" id="textInput1" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>0.30%</td>
+          <td>0.28%</td>
           <td>{{request.GET.conversion_mobile |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
 
@@ -103,7 +103,7 @@
           <td>
           <input type="text" id="textInput2" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>0.43%</td>
+          <td>0.76%</td>
           <td>{{request.GET.conversion_desktop |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
 
@@ -114,7 +114,7 @@
           <td>
           <input type="text" id="textInput3" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$466</td>
+          <td>$437</td>
           <td>${{request.GET.aov_mobile |floatformat:0|intcomma }}</td>
         </tr>
 
@@ -125,7 +125,7 @@
           <td>
           <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$516</td>
+          <td>$533</td>
           <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
         </tr>
 
@@ -136,7 +136,7 @@
           <td>
           <input type="text" id="textInput5" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$0.59</td>
+          <td>$0.69</td>
           <td>${{request.GET.cpc_mobile |floatformat:2|intcomma}}</td>
         </tr>
 
@@ -147,7 +147,7 @@
           <td>
           <input type="text" id="textInput6" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$2.09</td>
+          <td>$0.96</td>
           <td>${{request.GET.cpc_desktop |floatformat:2|intcomma}}</td>
         </tr>
 
