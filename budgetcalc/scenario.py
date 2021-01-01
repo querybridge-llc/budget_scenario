@@ -32,15 +32,17 @@ class scenario():
                                 (self.mix_desktop*self.conversion_desktop*self.aov_desktop) /self.cpc_desktop )
             traffic_m = (spend * self.mix_mobile)/self.cpc_mobile
             traffic_d = (spend * self.mix_desktop) / self.cpc_desktop
-            transactions = (traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)
-            sessions = traffic_m+traffic_d
+            transactions = ((traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2))* .6995
+            aov = revenue/transactions
+            sessions = (traffic_m+traffic_d) *.8710
             ##spend = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
             rpv = revenue/sessions
             d = dict();
             d['spend'] = spend
             #d['spend'] = sessions * ((self.cpc_mobile+self.cpc_desktop)/2)
             d['revenue'] = revenue
-            d['traffic'] = sessions
+            d['aov']= aov
+            d['traffic'] = sessions 
             d['transactions'] = transactions
             d['rpv'] = rpv
             d['conversion_mobile'] = self.conversion_mobile
@@ -58,13 +60,16 @@ class scenario():
         '''Insert Spend to see Revenue output'''
         traffic_m = (spend * self.mix_mobile)/self.cpc_mobile
         traffic_d = (spend * self.mix_desktop)/self.cpc_desktop
+        traffic = (traffic_m+traffic_d) * 0.8710
         revenue = (traffic_m * self.conversion_mobile * self.aov_mobile) + (traffic_d * self.conversion_desktop * self.aov_desktop)
-        rpv = revenue/(traffic_d+traffic_m)
+        rpv = revenue/traffic
+        aov = revenue/(((traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)) * 0.6995)
         d = dict();
         d['spend'] = spend
         d['revenue'] = revenue
-        d['traffic'] = traffic_m+traffic_d
-        d['transactions'] = (traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)
+        d['aov']= aov
+        d['traffic'] = traffic
+        d['transactions'] = ((traffic_m+traffic_d) * ((self.conversion_mobile+self.conversion_desktop)/2)) * 0.6995
         d['rpv'] = rpv
         d['conversion_mobile'] = self.conversion_mobile
         d['conversion_desktop'] = self.conversion_desktop

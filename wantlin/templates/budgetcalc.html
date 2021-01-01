@@ -38,7 +38,7 @@
           <tr>
             <td>{{form.revenue.label}}</td>
             <td><input type='text' id='id_revenue' name='revenue' value='{% ifequal request.GET.highlight "1" %} {{ request.GET.revenue }} {% endifequal %}'></td>
-            <td><input type="hidden" id="id_spend" name="spend" value=100></td>
+            <td><input type="hidden" id="id_spend" name="spend" value="100"></td>
             <!--<td><input type="button"  value="Submit" onclick="submitFormsRevenue()" class="btn btn-primary" /></td>-->
             <td><button type="Submit" id="copy" class="btn btn-primary">Predict</button></td>
           </tr>
@@ -63,6 +63,7 @@
       <ul class="list-group">
         <li class="list-group-item {% ifequal request.GET.highlight '1' %} list-group-item-success {% endifequal %}">Spend: ${{ request.GET.spend |floatformat:2|intcomma  }}</li>
         <li class="list-group-item {% ifequal request.GET.highlight '2' %} list-group-item-success {% endifequal %}">Revenue: ${{ request.GET.revenue |floatformat:2|intcomma }}</li>
+        <li class="list-group-item">AOV: ${{ request.GET.aov |floatformat:2|intcomma }}</li>
         <li class="list-group-item">Traffic: {{ request.GET.traffic |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Transactions: {{ request.GET.transactions |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Revenue per Visit: ${{ request.GET.rpv |floatformat:2|intcomma }}</li>
@@ -128,7 +129,7 @@
           <td>$533</td>
           <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
         </tr>
-
+<!---
         <tr>
           <td>{{ form.cpc_mobile.label }}</td>
           <td><input placeholder="" type="number" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="-100" max="100" value="0" step="1"
@@ -150,7 +151,7 @@
           <td>$0.96</td>
           <td>${{request.GET.cpc_desktop |floatformat:2|intcomma}}</td>
         </tr>
-
+--->
         <tr>
           <td>{{ form.mix_mobile.label }}</td>
            <td><input placeholder="" type="number" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="-100" max="100" value="0" step="1"
