@@ -113,11 +113,7 @@
           <td><input placeholder="" type="number" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="-100" max="100" value="0" step="1"
             onchange="updateTextInput3(this.value);aov_mobileFunction(this);" value="{{request.GET.aov_mobile}}">
           <td>
-<<<<<<< HEAD
-          <input type="text" id="textInput3" class="form-control form-control-sm col-3 " value="" readonly>
-=======
         <!--  <input type="text" id="textInput3" class="form-control form-control-sm col-3" value="" />% -->
->>>>>>> sliders-2025
           </td>
           <td>$437</td>
           <td>${{request.GET.aov_mobile |floatformat:0|intcomma }}</td>
