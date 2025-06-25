@@ -10,6 +10,9 @@ class BudgetCalcView(TemplateView, FormView):
     form_class = MyForm
     #success_url = 'budgetcalc/'
 
+class RetirementView(TemplateView):
+    template_name = 'ret_cal.html'
+
     def form_valid(self,form):
         #cleaned_data = super(self).clean()
         input = form.cleaned_data #cleaned_data

@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('budgetcalc/', BudgetCalcView.as_view(), name = 'budgetcalc'),
+     path('retirement/', RetirementView.as_view(), name = 'budgetcalc'),
     #path('budgetcalc/', BudgetCalcView.as_view(), name = 'budgetout'),
 ]
