@@ -38,7 +38,7 @@
           <tr>
             <td>{{form.revenue.label}}</td>
             <td><input type='text' id='id_revenue' name='revenue' value='{% ifequal request.GET.highlight "1" %} {{ request.GET.revenue }} {% endifequal %}'></td>
-            <td><input type="hidden" id="id_spend" name="spend" value="100"></td>
+            <td><input type="hidden" id="id_spend" name="spend" value=100></td>
             <!--<td><input type="button"  value="Submit" onclick="submitFormsRevenue()" class="btn btn-primary" /></td>-->
             <td><button type="Submit" id="copy" class="btn btn-primary">Predict</button></td>
           </tr>
@@ -63,7 +63,6 @@
       <ul class="list-group">
         <li class="list-group-item {% ifequal request.GET.highlight '1' %} list-group-item-success {% endifequal %}">Spend: ${{ request.GET.spend |floatformat:2|intcomma  }}</li>
         <li class="list-group-item {% ifequal request.GET.highlight '2' %} list-group-item-success {% endifequal %}">Revenue: ${{ request.GET.revenue |floatformat:2|intcomma }}</li>
-        <li class="list-group-item">AOV: ${{ request.GET.aov |floatformat:2|intcomma }}</li>
         <li class="list-group-item">Traffic: {{ request.GET.traffic |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Transactions: {{ request.GET.transactions |floatformat:0|intcomma }}</li>
         <li class="list-group-item">Revenue per Visit: ${{ request.GET.rpv |floatformat:2|intcomma }}</li>
@@ -73,88 +72,89 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
-  <table class="table table-responsive-md table-dark table-sm table-bordered">
+  <div class="col-lg-9">
+  <table class="table table-responsive-md table-dark table-sm table-bordered ml-lg-3">
   <form id='form3' action="{% url  'budgetcalc' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
       <thead>
         <tr>
           <th scope="col" class="text-center">Metrics Label</th>
-          <th scope="col" class="text-center" colspan="2">Growth Percentage <br><sub>(for eg: 10 = 10%)</sub></br></th>
-          <th scope="col" class="text-center">2020 Baseline</th>
+          <th scope="col" class="text-center" colspan="2">Growth Percentage</th>
+          <th scope="col" class="text-center">2020 Projection</th>
           <th scope="col" class="text-center">2021 Target</th>
         </tr>
       </thead>
         <tr>
+
           <td>{{ form.conversion_mobile.label }}</td>
-          <td><input placeholder="" type="number" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="-100" max="100" value="0" step="1"
-                     onchange="updateTextInput1(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}" >
+          <td><input placeholder="" type="range" id="{{ form.conversion_mobile.id }}" name="{{ form.conversion_mobile.name }} " min="0" max="1" value="0" step=".01"
+            onchange="updateTextInput1(this.value);conversion_mobileFunction(this);" value="{{request.GET.conversion_mobile}}">
           </td>
           <td>
           <input type="text" id="textInput1" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>0.28%</td>
+          <td>0.30%</td>
           <td>{{request.GET.conversion_mobile |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
 
         <tr>
           <td>{{ form.conversion_desktop.label }}</td>
-          <td><input placeholder="" type="number" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="-100" max="100" value="0" step="1"
+          <td><input placeholder="" type="range" id="{{ form.conversion_desktop.id }}" name="{{ form.conversion_desktop.name }} " min="0" max="1" value="0" step=".01"
             onchange="updateTextInput2(this.value);conversion_desktopFunction(this);" value="{{request.GET.conversion_desktop}}">
           </td>
           <td>
           <input type="text" id="textInput2" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>0.76%</td>
+          <td>0.43%</td>
           <td>{{request.GET.conversion_desktop |floatformat:4|intcomma|mul:100}}%</td>
         </tr>
 
         <tr>
           <td>{{ form.aov_mobile.label }}</td>
-          <td><input placeholder="" type="number" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="-100" max="100" value="0" step="1"
+          <td><input placeholder="" type="range" id="{{ form.aov_mobile.id }}" name="{{ form.aov_mobile.name }} " min="0" max="100" value="0" step="1"
             onchange="updateTextInput3(this.value);aov_mobileFunction(this);" value="{{request.GET.aov_mobile}}">
           <td>
         <!--  <input type="text" id="textInput3" class="form-control form-control-sm col-3" value="" />% -->
           </td>
-          <td>$437</td>
+          <td>$466</td>
           <td>${{request.GET.aov_mobile |floatformat:0|intcomma }}</td>
         </tr>
 
         <tr>
           <td>{{ form.aov_desktop.label }}</td>
-          <td><input placeholder="" type="number" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " min="-100" max="100" value="0" step="1"
+          <td><input placeholder="" type="range" id="{{ form.aov_desktop.id }}" name="{{ form.aov_desktop.name }} " min="0" max="100" value="0" step="1"
             onchange="updateTextInput4(this.value);aov_desktopFunction(this);" value="{{request.GET.aov_desktop}}">
           <td>
-          <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>
+          <input type="text" id="textInput4" class="form-control form-control-sm col-3 " value="" readonly>%
           </td>
-          <td>$533</td>
+          <td>$516</td>
           <td>${{request.GET.aov_desktop |floatformat:0|intcomma}}</td>
         </tr>
-<!---
+
         <tr>
           <td>{{ form.cpc_mobile.label }}</td>
-          <td><input placeholder="" type="number" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="-100" max="100" value="0" step="1"
+          <td><input placeholder="" type="range" id="{{ form.cpc_mobile.id }}" name="{{ form.cpc_mobile.name }} " min="0" max="1" value="0" step=".01"
             onchange="updateTextInput5(this.value);cpc_mobileFunction(this);" value="{{request.GET.cpc_mobile}}">
           <td>
           <input type="text" id="textInput5" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$0.69</td>
+          <td>$0.59</td>
           <td>${{request.GET.cpc_mobile |floatformat:2|intcomma}}</td>
         </tr>
 
         <tr>
           <td>{{ form.cpc_desktop.label }}</td>
-           <td><input placeholder="" type="number" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " min="-100" max="100" value="0" step="1"
+           <td><input placeholder="" type="range" id="{{ form.cpc_desktop.id }}" name="{{ form.cpc_desktop.name }} " min="0" max="1" value="0" step=".01"
             onchange="updateTextInput6(this.value);cpc_desktopFunction(this);" value="{{request.GET.cpc_desktop}}">
           <td>
           <input type="text" id="textInput6" class="form-control form-control-sm col-3 " value="" readonly>
           </td>
-          <td>$0.96</td>
+          <td>$2.09</td>
           <td>${{request.GET.cpc_desktop |floatformat:2|intcomma}}</td>
         </tr>
---->
+
         <tr>
           <td>{{ form.mix_mobile.label }}</td>
-           <td><input placeholder="" type="number" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="-100" max="100" value="0" step="1"
+           <td><input placeholder="" type="range" id="{{ form.mix_mobile.id }}" name="{{ form.mix_mobile.name }} " min="0" max="1" value="0" step="0.01"
             onchange="updateTextInput7(this.value);mix_mobileFunction(this);" value="{{request.GET.mix_mobile}}">
           <td>
           <input type="text" id="textInput7" class="form-control form-control-sm col-3 " value="" readonly>
